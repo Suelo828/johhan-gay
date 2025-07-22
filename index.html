@@ -1,1 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Virus Troll</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background-color: black;
+      color: red;
+      font-family: monospace;
+      font-size: 24px;
+      text-align: center;
+      cursor: none;
+    }
+    #mensaje {
+      animation: parpadeo 0.3s infinite alternate;
+    }
+    @keyframes parpadeo {
+      from { opacity: 1; }
+      to { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div id="mensaje">☠️ Hackeando tu tostadora... ☠️</div>
 
+  <script>
+    const mensajes = [
+      "💥 ERROR 404: Cerebro no encontrado 💥",
+      "🔥 Instalando TikTok en BIOS...",
+      "😈 Hackeo venezolano activado",
+      "💣 Tu PC fue vendida en OLX",
+      "📉 Rendimiento del sistema: -100%",
+      "😱 Tu GPU se fue de vacaciones",
+      "💾 Formateando emociones...",
+      "🕵️‍♂️ FBI está viendo esto",
+    ];
+
+    const urls = [
+      "https://web.whatsapp.com",
+      "https://www.google.com/search?q=me+hackearon",
+      "https://es.wikipedia.org/wiki/Meme",
+      "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    ];
+
+    let tiempoInicio = Date.now();
+
+    function cambiarMensajeYColor() {
+      const randomMensaje = mensajes[Math.floor(Math.random() * mensajes.length)];
+      const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+      document.body.style.backgroundColor = randomColor;
+      document.getElementById("mensaje").textContent = randomMensaje;
+
+      // Abrir una ventana troll
+      if (Math.random() < 0.3) {
+        window.open(urls[Math.floor(Math.random() * urls.length)], '_blank');
+      }
+
+      // Detener todo después de 60 segundos
+      if (Date.now() - tiempoInicio > 60000) {
+        document.body.style.cursor = "auto";
+        document.body.innerHTML = "<h1 style='color:lime;'>Troleo completado. Tu PC está bien 😎</h1>";
+        clearInterval(intervalo);
+      }
+    }
+
+    let intervalo = setInterval(cambiarMensajeYColor, 700);
+  </script>
+</body>
+</html>
+s
